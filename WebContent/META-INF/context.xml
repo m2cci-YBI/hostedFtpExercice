@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <!-- App-scoped JNDI DataSource for Tomcat JDBC pool -->
+  <Resource name="jdbc/PureServletMVC"
+            auth="Container"
+            type="javax.sql.DataSource"
+            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+            driverClassName="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/webapp_db?useSSL=false&amp;serverTimezone=UTC"
+            username="root"
+            password="password"
+            initialSize="2"
+            maxActive="10"
+            maxWait="5000"
+            testOnBorrow="true"
+            validationQuery="SELECT 1"/>
+</Context>
+
