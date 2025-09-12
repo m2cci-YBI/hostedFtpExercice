@@ -17,15 +17,13 @@ public class Authentication implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Initialization code if needed
+      
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-
-        // Allow access to login, logout, and error pages without token
         if (req.getRequestURI().startsWith(req.getContextPath() + "/login") ||
             req.getRequestURI().startsWith(req.getContextPath() + "/logout") ||
             req.getRequestURI().startsWith(req.getContextPath() + "/error")) {
@@ -56,13 +54,11 @@ public class Authentication implements Filter {
             Integer userId = decodedJWT.getClaim("userId").asInt();
             String username = decodedJWT.getClaim("username").asString();
 
-            // Make user info available on the current request (stateless JWT)
             req.setAttribute("userId", userId);
             req.setAttribute("username", username);
 
             chain.doFilter(request, response);
         } catch (JWTVerificationException e) {
-            // Token is invalid or expired
             LOGGER.log(Level.WARNING, "Invalid/expired JWT; redirecting to login", e);
             resp.sendRedirect(req.getContextPath() + "/login");
         }
@@ -70,6 +66,5 @@ public class Authentication implements Filter {
 
     @Override
     public void destroy() {
-        // Cleanup code if needed
     }
 }

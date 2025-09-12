@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
             Cookie jwtCookie = new Cookie("jwt", token);
             jwtCookie.setHttpOnly(true);
             jwtCookie.setSecure(req.isSecure());
-            jwtCookie.setPath("/"); // Use root path to avoid proxy/context path mismatches
+            jwtCookie.setPath("/");
             jwtCookie.setMaxAge(60 * 60);
             resp.addCookie(jwtCookie);
 

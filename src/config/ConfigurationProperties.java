@@ -19,18 +19,8 @@ public final class ConfigurationProperties {
             }
 
             jwtSecret = required("jwt.secret.key");
-
             String exp = props.getProperty("jwt.expiration.ms");
-            if (exp == null || exp.trim().isEmpty()) {
-                jwtExpirationMs = 3600000L; // default 1 hour
-            } else {
-                try {
-                    jwtExpirationMs = Long.parseLong(exp.trim());
-                } catch (NumberFormatException nfe) {
-                    jwtExpirationMs = 3600000L; // fallback
-                }
-            }
-
+            jwtExpirationMs = Long.parseLong(exp.trim());
         } catch (Exception e) {
             throw new RuntimeException("ConfigurationProperties init error", e);
         }
@@ -38,7 +28,7 @@ public final class ConfigurationProperties {
 
     private static String required(String key) {
         String v = props.getProperty(key);
-        if (v == null || v.trim().isEmpty()) {
+        if (v == null) {
             throw new RuntimeException("Missing required property: " + key);
         }
         return v;

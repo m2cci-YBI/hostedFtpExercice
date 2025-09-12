@@ -13,7 +13,7 @@ public class LogoutServlet extends HttpServlet {
         Cookie jwtCookie = new Cookie("jwt", "");
         jwtCookie.setHttpOnly(true);
         jwtCookie.setSecure(req.isSecure());
-        jwtCookie.setPath("/"); // Match login cookie path
+        jwtCookie.setPath("/");
         jwtCookie.setMaxAge(0);
         resp.addCookie(jwtCookie);
 

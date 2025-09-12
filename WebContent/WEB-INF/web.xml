@@ -42,13 +42,12 @@
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 
-  <!-- Forward any 404 (not found) to the login page -->
+  
   <error-page>
     <error-code>404</error-code>
     <location>/login</location>
   </error-page>
 
-  <!-- JNDI DataSource reference for Tomcat JDBC/DBCP -->
   <resource-ref>
     <description>Application Database</description>
     <res-ref-name>jdbc/PureServletMVC</res-ref-name>
