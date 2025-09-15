@@ -5,7 +5,7 @@ USE `webapp_db`;
 
 -- Create login user
 INSERT INTO `user_login` (`username`, `password`)
-VALUES ('hostedftp', '$2a$10$VibfpcoSx.QFtEwEFL8jremX4/wIrhxQKgK9Z/4wjmOKeMSoeZ.4S');
+VALUES ('hostedftp', '*************************************************');
 
 -- Personal info for hostedftp
 INSERT INTO `user_personal_info` (`user_id`, `first_name`, `last_name`)
