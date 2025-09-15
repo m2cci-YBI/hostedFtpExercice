@@ -18,11 +18,11 @@ public final class Database {
     private static DataSource lookupJndi() {
         try {
             Context ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/PureServletMVC");
-            LOGGER.log(Level.INFO, "JNDI DataSource found: jdbc/PureServletMVC");
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/hostedFtpExercice");
+            LOGGER.log(Level.INFO, "JNDI DataSource found: jdbc/hostedFtpExercice");
             return ds;
         } catch (NamingException e) {
-            throw new RuntimeException("JNDI DataSource 'jdbc/PureServletMVC' not found. Ensure META-INF/context.xml or Tomcat context defines it and the driver is in TOMCAT_HOME/lib.", e);
+            throw new RuntimeException("JNDI DataSource 'jdbc/hostedFtpExercice' not found. Ensure META-INF/context.xml or Tomcat context defines it and the driver is in TOMCAT_HOME/lib.", e);
         }
     }
 

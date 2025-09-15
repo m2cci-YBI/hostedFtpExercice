@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
         
-    <wb-module deploy-name="PureServletMVC">
+    <wb-module deploy-name="hostedFtpExercice">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/build/classes"/>
                 
-        <property name="context-root" value="PureServletMVC"/>
+        <property name="context-root" value="hostedFtpExercice"/>
                 
-        <property name="java-output-path" value="/PureServletMVC/build/classes"/>
+        <property name="java-output-path" value="/hostedFtpExercice/build/classes"/>
             
     </wb-module>
     

@@ -3,7 +3,7 @@ package model;
 public class User {
   private int id;
   private String username;
-  private String password; // plaintext here to match schema/demo
+  private String password; // BCrypt hash from DB
 
   public int getId() { return id; }
   public void setId(int id) { this.id = id; }

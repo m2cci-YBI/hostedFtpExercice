@@ -29,13 +29,17 @@ public class WelcomeServlet extends HttpServlet {
 
         Optional<UserInfo> info = userInfoDao.findByUserId(userId);
         if (!info.isPresent()) {
-            LOGGER.log(Level.WARNING, "No profile data found for userId={0}", userId);
-            req.setAttribute("message", "No profile data found.");
-            req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
+            LOGGER.log(Level.WARNING, "No profile data found for userId={0}; redirecting to login", userId);
+            resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
-        req.setAttribute("username", username);
+        String firstName = info.get().getFirstName();
+        String lastName = info.get().getLastName();
+        req.setAttribute("firstName", firstName);
+        req.setAttribute("lastName", lastName);
+        // Backward-compatibility with JSPs referencing "username"
+        req.setAttribute("username", (firstName + " " + lastName).trim());
         req.setAttribute("company", info.get().getCompanyName());
         req.setAttribute("salary", info.get().getSalary());
         req.setAttribute("startDate", info.get().getStartDate());

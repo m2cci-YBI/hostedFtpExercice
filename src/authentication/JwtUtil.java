@@ -1,4 +1,4 @@
-package util;
+package authentication;
 
 import config.ConfigurationProperties;
 
@@ -14,11 +14,11 @@ public final class JwtUtil {
     private JwtUtil() {}
 
     private static final Algorithm ALGORITHM = Algorithm.HMAC256(ConfigurationProperties.getJwtSecret());
-    private static final JWTVerifier VERIFIER = JWT.require(ALGORITHM).withIssuer("auth0").build();
+    private static final JWTVerifier VERIFIER = JWT.require(ALGORITHM).withIssuer("hostedftp").build();
 
     public static String generateToken(int userId, String username) {
         return JWT.create()
-                .withIssuer("auth0")
+                .withIssuer("hostedftp")
                 .withClaim("userId", userId)
                 .withClaim("username", username)
                 .withExpiresAt(new Date(System.currentTimeMillis() + ConfigurationProperties.getJwtExpirationMs()))

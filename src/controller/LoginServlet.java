@@ -3,8 +3,8 @@ package controller;
 import dao.UserDao;
 import dao.JdbcUserDao;
 import model.User;
-import util.PasswordUtil;
-import util.JwtUtil;
+import authentication.PasswordUtil;
+import authentication.JwtUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

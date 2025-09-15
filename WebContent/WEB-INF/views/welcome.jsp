@@ -11,7 +11,7 @@
   <div class="container mt-5">
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <h1>Welcome, <%= request.getAttribute("username") %>!</h1>
+        <h1>Welcome, <%= request.getAttribute("firstName") %> <%= request.getAttribute("lastName") %>!</h1>
         <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger">Logout</a>
       </div>
       <div class="card-body">

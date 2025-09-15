@@ -2,7 +2,7 @@ package authentication;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import util.JwtUtil;
+import authentication.JwtUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
@@ -25,8 +25,7 @@ public class Authentication implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         if (req.getRequestURI().startsWith(req.getContextPath() + "/login") ||
-            req.getRequestURI().startsWith(req.getContextPath() + "/logout") ||
-            req.getRequestURI().startsWith(req.getContextPath() + "/error")) {
+            req.getRequestURI().startsWith(req.getContextPath() + "/logout")) {
             LOGGER.log(Level.INFO, "Bypassing JWT check for public path: {0}", req.getRequestURI());
             chain.doFilter(request, response);
             return;
